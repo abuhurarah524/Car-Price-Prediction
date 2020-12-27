@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Car Price Prediction System</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+   
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://use.fontawsome.com/releases/v5.0.8/js/all.js"></script>
+
+    
+
+</head>
+
+<body style="background-image:url(https://www.bigboytoyz.com/theme/BBT/img/gurgaon/home/09.jpg)"
+background-size: cover;
+>
+<!-- Main div -->
+<div class="container mt-5 mb-5">
+    <div class="row">
+
+        <!-- Left Card for Project Introduction -->
+        <div class="card col-lg-7 text-  center" style="color: white; background: rgba(0, 0, 0, 0.7);">
+            <h1 class="m-5">
+                <strong>Car Price Prediction System</strong>
+              </h1>
+              
+              <!-- Salutaion -->
+              <p class="ml-5" style="font-weight: bolder; color: green; text-align: left">
+                                  Asslam-o-Alaikum !</p>
+              
+              <!-- Instructions -->
+              <ul class="ml-4 mr-4" style="text-align: justify"> 
+                <li>The main aim of this project is to predict the price of Used Cars</li>
+              </ul>
+              
+
+
+
+
+
+              <!-- Read Instructions button -->
+              <button class="btn btn-secondary mt-4" style="width: 200px; margin-left: 50px; margin-bottom: 50px" data-toggle="modal" data-target="#instructionmodal">Read Instructions
+              </button>
+              
+              
+ 
+        </div>
+ 
+        <!-- Right Card for System Inputs -->
+        <div class="col-lg-5 text-center" style="background: rgba(247, 223, 227, 0.7)">
+            <div>
+                <h2 class="m-5" style="color: black"><strong>Predict Price</strong></h2>
+              </div>
+              
+              <div id="inputs-form">
+                <form action="/" method="POST">
+              
+              <!-- Present_Price  -->
+              <div class="form-group row">
+                <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Present_Price</label>
+                <div class="col-lg-6 col-xl-5 col-6">
+                    <input name="Present_Price" id="Present_Price" type="text" placeholder="Enter Present Price" style="background-color: rgb(0, 0, 0, 0.5);
+                    border-width: 3px;
+                    border-color: #f0526c;
+                    color: #f8f9fa;
+                    height: 40px;
+                    font-size: 18px;
+                    " onchange="checkSelection(this)" required>
+                </div>
+            </div>
+              
+              <!-- Kms_Driven  -->
+              <div class="form-group row">
+                <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Kms_Driven</label>
+                <div class="col-lg-6 col-xl-5 col-6">
+                    <input name="Kms_Driven" id="Kms_Driven" type="text" placeholder="Enter Kms_Driven" style="background-color: rgb(0, 0, 0, 0.5);
+                    border-width: 3px;
+                    border-color: #f0526c;
+                    color: #f8f9fa;
+                    height: 40px;
+                    font-size: 18px;
+                    " onchange="checkSelection(this)" required>
+                </div>
+            </div>
+              
+              <!-- Fuel_Type Dropdown -->
+              <div class="form-group row">
+                 <label class="col-lg-4 col-4 offset-lg-1 col-form-label"
+                 style="font-weight: bolder; font-size: large">Fuel_Type</label>
+                 <div class="col-lg-6 col-xl-5 col-6">
+                    <div class="dropdown">
+                       <select class="form-control btn-secondary" name="Fuel_Type" id="Fuel_Type" style="background: rgb(0, 0, 0, 0.5);
+              border-width: 3px;border-color: #f0526c;color: white;height: 40px;
+              " onchange="checkSelection(this)" required>
+                          <option selected disabled value="">Select Fuel Type</option>
+                          <option value="0">Petrol</option>
+                          <option value="1">Diesel</option>
+                             </select>
+                          </div>
+                       </div>
+              </div>
+              
+              <!-- Seller_Type Dropdown -->
+              <div class="form-group row">
+                 <label class="col-lg-4 col-4 offset-lg-1 col-form-label"
+                 style="font-weight: bolder; font-size: large">Seller_Type</label>
+                 <div class="col-lg-6 col-xl-5 col-6">
+                    <div class="dropdown">
+                       <select class="form-control btn-secondary" name="Seller_Type" id="Seller_Type" style="background: rgb(0, 0, 0, 0.5);
+              border-width: 3px;border-color: #f0526c;color: white;height: 40px;
+              " onchange="checkSelection(this)" required>
+                          <option selected disabled value="">Select Seller_Type</option>
+                          <option value="0">Dealer</option>
+                          <option value="1">Individual</option>                         
+                       </select>
+                    </div>
+                 </div>
+              </div>
+              <!-- Transmission Dropdown -->
+              <div class="form-group row">
+                <label class="col-lg-4 col-4 offset-lg-1 col-form-label"
+                style="font-weight: bolder; font-size: large">Transmission</label>
+                <div class="col-lg-6 col-xl-5 col-6">
+                   <div class="dropdown">
+                      <select class="form-control btn-secondary" name="Transmission" id="Transmission" style="background: rgb(0, 0, 0, 0.5);
+             border-width: 3px;border-color: #f0526c;color: white;height: 40px;
+             " onchange="checkSelection(this)" required>
+                         <option selected disabled value="">Select Transmission</option>
+                         <option value="0">Manual</option>
+                         <option value="1">Automatic</option>                         
+                      </select>
+                   </div>
+                </div>
+             </div>
+             <!-- Age  -->
+             <div class="form-group row">
+                <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Age</label>
+                <div class="col-lg-6 col-xl-5 col-6">
+                    <input name="Age" id="Age" type="text" placeholder="Enter Age" style="background-color: rgb(0, 0, 0, 0.5);
+                    border-width: 3px;
+                    border-color: #f0526c;
+                    color: #f8f9fa;
+                    height: 40px;
+                    font-size: 18px;
+                    " onchange="checkSelection(this)" required>
+                </div>
+            </div>
+            <!-- Owner  -->
+            <div class="form-group row">
+                <label class="col-lg-4 col-4 offset-lg-1" style="font-weight: bolder; font-size: large;">Owner</label>
+                <div class="col-lg-6 col-xl-5 col-6">
+                    <input name="Owner" id="Owner" type="text" placeholder="Enter Owner" style="background-color: rgb(0, 0, 0, 0.5);
+                    border-width: 3px;
+                    border-color: #f0526c;
+                    color: #f8f9fa;
+                    height: 40px;
+                    font-size: 18px;
+                    " onchange="checkSelection(this)" required>
+                </div>
+            </div>
+              
+              <!-- Predict Button -->
+              <div class="form-group row mt-5">
+                 <div class="col-lg-8 offset-lg-2 col-9 offset-1 mb-5">
+                    <button type="submit" class="btn btn-success" id="calculateButton" style="width: 100%">Predict
+                    </button>
+                 </div>
+              </div>
+
+             
+
+
+
+
+              <!-- Instruction Modal -->
+              <div class="modal fade" id="instructionmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title" style="margin-left: 35%">
+                                <strong>Instructions</strong>
+                            </h4>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                            
+                          </div>
+                         
+                            
+                            
+                              <!-- Instruction Heading -->
+<div class="w-100 text-center" style="background: #009cff; color: white; height: 50px">
+    <h5 style="padding-top: 10px">Input Attributes Details</h5>
+</div>
+
+<!-- Collapsable System Input Attributes in Instruction Modal -->
+<div id="accordion">
+    <div class="card mt-2" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Present_Priceheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Present_Pricecollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Present_Price - Present_Price</b>
+            </i>
+        </div>
+        <div id="Present_Pricecollapse" class="collapse" aria-labelledby="Present_Priceheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Present_Price are integers :
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-1" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Kms_Drivenheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Kms_Drivencollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Kms_Driven</b>
+            </i>
+        </div>
+        <div id="Kms_Drivencollapse" class="collapse" aria-labelledby="Kms_Drivenheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Kms_Driven are integers :
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card mt-1" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Fuel_Typesheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Fuel_Typescollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Fuel_Type</b>
+            </i>
+        </div>
+        <div id="Fuel_Typecollapse" class="collapse" aria-labelledby="Fuel_Typesheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Fuel_Type are :
+                <ul>
+                    <li>Petrol</li>
+                    <li>Diesel</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-1" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Seller_Typeheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Seller_Typecollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Seller_Type</b>
+            </i>
+        </div>
+        <div id="Seller_Typecollapse" class="collapse" aria-labelledby="Seller_Typeheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Seller_Type are :
+                <ul>
+                    <li>Dealer</li>
+                    <li>Individual</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-1" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Transmissionheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Transmissioncollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Transmission</b>
+            </i>
+        </div>
+        <div id="Transmissioncollapse" class="collapse" aria-labelledby="Transmissionheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Transmission are :
+                <ul>
+                    <li>Manual</li>
+                    <li>Automatic</li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-2" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Ageheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Agecollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Age </b>
+            </i>
+        </div>
+        <div id="Agecollapse" class="collapse" aria-labelledby="Ageheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Age are integers :
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card mt-2" style="background: rgb(173, 170, 170)">
+        <div class="card-header" id="Ownerheading" style="display: inline-flex;height: 40px;align-content: center;cursor: pointer;" data-toggle="collapse" data-target="#Ownercollapse" aria-expanded="false"
+            aria-controls="collapseOne">
+            <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Owner </b>
+            </i>
+        </div>
+        <div id="Ownercollapse" class="collapse" aria-labelledby="Ownerheading"
+            style="background: white" data-parent="#accordion">
+            <div class="card-body">
+                Possible Values of Owner are integers :
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body">
+        <div class="w-100 text-center mt-3" style="background: #009cff; color: white; height: 50px">
+            <h5 style="padding-top: 10px">Steps to Follow</h5>
+        </div>
+        
+        <!-- Steps of Prediction -->
+        <div class="mt-3 ml-3">
+            <span style="font-weight: bolder">Step 1 : </span> Select
+            values of
+            <span style="font-weight: bolder; color: #009cff">Present_Price, Kms_Driven, Fuel_Type, Seller_Type,Transmission,Age,Owner
+            </span><br />
+            <span style="font-weight: bolder">Step 2 : </span> Click on
+            <span style="font-weight: bolder; color: #009cff">Predict</span>
+            Button<br />
+            <span style="font-weight: bolder">Step 3 : </span> Our Car Price Prediction System will predict the selling price
+           
+        </div>
+
+</div>
+
+
+        
+        
+       
+
+</div>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display of predicted result -->
+<div class="result-box mt-3">
+    <p id="result", ><span style="font-weight: bolder;font-size: 25px ;color: #dd142f">{{prediction_text}}</span></p>
+</div>
+
+                 </form>
+              </div>
+              
+
+        </div>
+ 
+      </div>
+ 
+ 
+
+
+
+</body>
+<script>
+    // Making dropdown border as green when the value of attribute is changed
+    function checkSelection(element) {
+    if (element.value != "") {
+        element.style.borderColor = "green"; //change color to green
+    }
+}
+    // Handle Present_Price collapse on click
+    $("#Present_Priceheading").click(function () {
+        if ($("#Present_Priceheading").attr("aria-expanded") == "false") {
+            $("#Present_Priceheading i").removeClass("fa-plus-circle");
+            $("#Present_Priceheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Present_Priceheading").attr("aria-expanded") == "true") {
+            $("#Present_Priceheading i").removeClass("fa-minus-circle");
+            $("#Present_Priceheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Kms_Driven collapse on click
+    $("#Kms_Drivenheading").click(function () {
+        if ($("#Kms_Drivenheading").attr("aria-expanded") == "false") {
+            $("#Kms_Drivenheading i").removeClass("fa-plus-circle");
+            $("#Kms_Drivenheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Kms_Drivenheading").attr("aria-expanded") == "true") {
+            $("#Kms_Drivenheading i").removeClass("fa-minus-circle");
+            $("#Kms_Drivenheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Fuel_Types collapse on click
+    $("#Fuel_Typesheading").click(function () {
+        if ($("#Fuel_Typesheading").attr("aria-expanded") == "false") {
+            $("#Fuel_Typesheading i").removeClass("fa-plus-circle");
+            $("#Fuel_Typesheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Fuel_Typesheading").attr("aria-expanded") == "true") {
+            $("#Fuel_Typesheading i").removeClass("fa-minus-circle");
+            $("#Fuel_Typesheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Seller_Type collapse on click
+    $("#Seller_Typeheading").click(function () {
+        if ($("#Seller_Typeheading").attr("aria-expanded") == "false") {
+            $("#Seller_Typeheading i").removeClass("fa-plus-circle");
+            $("#Seller_Typeheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Seller_Typeheading").attr("aria-expanded") == "true") {
+            $("#Seller_Typeheading i").removeClass("fa-minus-circle");
+            $("#Seller_Typeheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Transmission collapse on click
+    $("#Transmissionheading").click(function () {
+        if ($("#Transmissionheading").attr("aria-expanded") == "false") {
+            $("#Transmissionheading i").removeClass("fa-plus-circle");
+            $("#Transmissionheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Transmissionheading").attr("aria-expanded") == "true") {
+            $("#Transmissionheading i").removeClass("fa-minus-circle");
+            $("#STransmissionheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Age collapse on click
+    $("#Seller_Typeheading").click(function () {
+        if ($("#Ageheading").attr("aria-expanded") == "false") {
+            $("#Ageheading i").removeClass("fa-plus-circle");
+            $("#Ageheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Ageheading").attr("aria-expanded") == "true") {
+            $("#Ageheading i").removeClass("fa-minus-circle");
+            $("#Ageheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+    // Handle Owner collapse on click
+    $("#Ownerheading").click(function () {
+        if ($("#Ownerheading").attr("aria-expanded") == "false") {
+            $("#Ownerheading i").removeClass("fa-plus-circle");
+            $("#Ownerheading i").addClass("fa-minus-circle");
+        }
+        if ($("#Ownerheading").attr("aria-expanded") == "true") {
+            $("#Ownerheading i").removeClass("fa-minus-circle");
+            $("#Ownerheading i").addClass("fa-plus-circle");
+        }
+    });
+    
+  
+    
+    // Handling of Result modal to be displayed
+    window.onload = function () {
+        if (document.getElementById("result").innerText) {
+            $("#resultmodal").modal("show");
+        }
+    };
+    
+    
+    </script>
+</html>
